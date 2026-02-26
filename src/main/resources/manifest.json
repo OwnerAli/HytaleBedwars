@@ -1,21 +1,21 @@
 {
-  "Group": "group",
-  "Name": "ModName",
+  "Group": "Alii",
+  "Name": "Bedwars",
   "Version": "1.0.0",
-  "Description": "Your description",
+  "Description": "",
   "Authors": [
-    {
-      "Name": "your name"
-    },
     {
       "Name": "Alii"
     }
   ],
   "Website": "",
   "ServerVersion": "*",
-  "Dependencies": {},
+  "Dependencies": {
+    "Hytale:EntityModule": "*",
+    "Hytale:BlockModule": "*"
+  },
   "OptionalDependencies": {},
   "DisabledByDefault": false,
-  "Main": "package.mainclass",
+  "Main": "me.alii.BedwarsPlugin",
   "IncludesAssetPack": true
 }
