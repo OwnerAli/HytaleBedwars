@@ -3,7 +3,9 @@ package me.alii.domain;
 import com.hypixel.hytale.codec.Codec;
 import com.hypixel.hytale.codec.KeyedCodec;
 import com.hypixel.hytale.codec.builder.BuilderCodec;
+import com.hypixel.hytale.component.AddReason;
 import com.hypixel.hytale.component.Holder;
+import com.hypixel.hytale.component.Store;
 import com.hypixel.hytale.math.vector.Vector3d;
 import com.hypixel.hytale.math.vector.Vector3f;
 import com.hypixel.hytale.server.core.HytaleServer;
@@ -41,6 +43,7 @@ public class TypeSpeed {
 
     public void startGenerating(Vector3d spawnPosition, World world) {
         if (this.spawningTask != null) return;
+        Store<EntityStore> entityStore = world.getEntityStore().getStore();
         spawningTask = HytaleServer.SCHEDULED_EXECUTOR
                 .scheduleAtFixedRate(() -> world.execute(() -> {
                     Holder<EntityStore> holder = EntityStore.REGISTRY.newHolder();
@@ -48,6 +51,8 @@ public class TypeSpeed {
                     ItemComponent itemComponent = new ItemComponent(item);
                     holder.addComponent(TransformComponent.getComponentType(), transformComponent);
                     holder.addComponent(ItemComponent.getComponentType(), itemComponent);
+
+                    entityStore.addEntity(holder, AddReason.SPAWN);
                 }), 0, genSpeed, timeUnit);
     }
 

@@ -28,8 +28,8 @@ public class GeneratorComponent implements Component<ChunkStore> {
     @Override
     public Component<ChunkStore> clone() {
         GeneratorComponent generatorComponent = new GeneratorComponent();
-        generatorComponent.spawnPosition = spawnPosition;
-        generatorComponent.generatorConfig = generatorConfig;
+        generatorComponent.spawnPosition = this.spawnPosition;
+        generatorComponent.generatorConfig = this.generatorConfig;
         return generatorComponent;
     }
 
